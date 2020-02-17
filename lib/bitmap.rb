@@ -8,7 +8,7 @@ class Bitmap
         num.clamp(1,250)
     end
 
-    def create_map(x,y)
+    def create_map(x:,y:)
         @map = Array.new(restrict(y)) {Array.new(restrict(x), 0)}
     end
     
