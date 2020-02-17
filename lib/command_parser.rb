@@ -9,12 +9,14 @@ class CommandParser
     # end
 
     def parse_create_bitmap_command(command)
+        #function for parsing the I command
+        # validates with regex and returns an object 
         validator = /(^[I])(\s)(\d{1,3})(\s)(\d{1,3}$)/
         validated = validator.match(command)
-        return false unless if validated
+        return false unless validated
         to_filter = validated.captures
         parsed = to_filter.filter {|element| element != " "}
-        {command: parsed[0], x: parsed[1], y: parsed[2]}
+        {command: parsed[0], parameters:{ x: parsed[1], y: parsed[2]}}
     end
     
     # def space_filter(arr)
