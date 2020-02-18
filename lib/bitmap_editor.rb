@@ -1,5 +1,4 @@
 class BitmapEditor
-  attr_accessor :command_service
   def initialize
     @command_service = CommandService.new
   end
@@ -10,7 +9,6 @@ class BitmapEditor
     File.open(file).each do |line|
       line = line.chomp
       @command_service.execute(line)
-      sleep(3)
     end
   end
 end

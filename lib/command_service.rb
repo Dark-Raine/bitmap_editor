@@ -1,6 +1,4 @@
 class CommandService
-    attr_accessor :bitmap, :command_parser
-
     def initialize 
         @bitmap = Bitmap.new
         @command_parser = CommandParser.new
@@ -10,7 +8,7 @@ class CommandService
         # this will parse the command if it's valid
         parsers = CommandParser.instance_methods(false)
         result = parsers.map {|parser| @command_parser.send(parser, unparsed_command)}.find {|val| !!val}
-        return false unless !!result
+        return false unless result
         result
       end
       
@@ -27,10 +25,6 @@ class CommandService
       def execute(unparsed_command)
         # uses the two other supporting methods execute a command passed in from the file
         instruction_obj = get_parsed_command(unparsed_command)
-        instruction_obj ?  perform_command(instruction_obj) : false
+        perform_command(instruction_obj) if (instruction_obj && (instruction_obj[:command] == "I" || !!@bitmap.map)) 
       end
 end
-
-
-# the idea here is to have a service like class that will perform all the actions we need
-# ensuring things are running as intended by providing good returns that will tell the editor when to display errors
