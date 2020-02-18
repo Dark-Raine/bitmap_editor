@@ -1,6 +1,3 @@
-require_relative './command_parser.rb'
-require_relative './bitmap.rb'
-require 'pry'
 class BitmapEditor
   attr_accessor :command_service
   def initialize
