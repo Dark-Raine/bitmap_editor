@@ -25,4 +25,12 @@ class Bitmap
     def l(x:,y:,colour:)
         @map[restrict_y(y)-1][restrict_x(x)-1] = colour
     end
+
+    def v(x:,y1:,y2:,colour:)
+        corrected_y1 = restrict_y(y1)
+        corrected_y2 = restrict_y(y2)
+        corrected_x = restrict_x(x)-1
+        column_indicies = !(corrected_y1 > corrected_y2) ? (corrected_y1..corrected_y2).to_a : (corrected_y2..corrected_y1).to_a
+        column_indicies.each {|indicie| @map[indicie-1][corrected_x]=colour}
+    end
 end
