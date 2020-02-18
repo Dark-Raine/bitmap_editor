@@ -1,8 +1,5 @@
 class Bitmap
     # this will execute changes to the bit map from a parsed command
-    attr_reader :map
-
-
     def restrict_y(num)
         num.to_i.clamp(1,@y_max||250)
     end
@@ -36,5 +33,12 @@ class Bitmap
         corrected_x = restrict_x(x)-1
         column_indicies = !(corrected_y1 > corrected_y2) ? (corrected_y1..corrected_y2).to_a : (corrected_y2..corrected_y1).to_a
         column_indicies.each {|indicie| @map[indicie-1][corrected_x]=colour}
+    end
+    
+    def h(x1:,x2:,y:,colour:)
+        corrected_x1 = restrict_x(x1)-1
+        corrected_x2 = restrict_x(x2)-1
+        corrected_y = restrict_y(y)-1
+        corrected_x1 < corrected_x2 ? @map[corrected_y].fill(colour, corrected_x1..corrected_x2) : @map[corrected_y].fill(colour, corrected_x2..corrected_x1)
     end
 end
