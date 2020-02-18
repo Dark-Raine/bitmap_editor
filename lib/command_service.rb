@@ -17,7 +17,11 @@ class CommandService
       def perform_command(instruction_obj)
         # with the passed in instruction object, the command is finally performed using
         # the information within the instruction object
-        @bitmap.send(instruction_obj[:command].downcase, instruction_obj[:parameters])
+        if instruction_obj[:parameters]
+            @bitmap.send(instruction_obj[:command].downcase, instruction_obj[:parameters])
+        else
+            @bitmap.send(instruction_obj[:command].downcase)
+        end
       end
       
       def execute(unparsed_command)
