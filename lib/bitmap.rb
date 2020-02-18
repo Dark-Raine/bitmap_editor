@@ -1,5 +1,6 @@
 class Bitmap
     # this will execute changes to the bit map from a parsed command
+    attr_reader :map
     def restrict_y(num)
         num.to_i.clamp(1,@y_max||250)
     end
@@ -12,7 +13,7 @@ class Bitmap
         # the create bitmap command
         @y_max = restrict_y(y)
         @x_max = restrict_x(x)
-        @map = Array.new(@y_max) {Array.new(@x_max, 0)}
+        @map = Array.new(@y_max) {Array.new(@x_max, "O")}
     end
 
     def c
