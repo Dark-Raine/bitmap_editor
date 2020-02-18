@@ -1,15 +1,15 @@
 class CommandService
     attr_accessor :bitmap, :command_parser
 
-    def initilaize 
+    def initialize 
         @bitmap = Bitmap.new
         @command_parser = CommandParser.new
     end
 
     def get_parsed_command(unparsed_command)
         # this will parse the command if it's valid
-        parsers = @command_parser.instance_methods(false)
-        result = parsers.map {|parser| parser_instance.send(parser, unparsed_command)}.find {|val| !!val}
+        parsers = CommandParser.instance_methods(false)
+        result = parsers.map {|parser| @command_parser.send(parser, unparsed_command)}.find {|val| !!val}
         return false unless !!result
         result
       end
