@@ -30,7 +30,3 @@ class CommandService
         instruction_obj ?  perform_command(instruction_obj) : false
       end
 end
-
-
-# the idea here is to have a service like class that will perform all the actions we need
-# ensuring things are running as intended by providing good returns that will tell the editor when to display errors
