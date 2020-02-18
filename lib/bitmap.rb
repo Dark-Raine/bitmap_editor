@@ -11,6 +11,8 @@ class Bitmap
         # the create bitmap command
         @map = Array.new(restrict(y)) {Array.new(restrict(x), 0)}
     end
-    
-    
+
+    def c
+        @map.each {|row| row.fill("O")}
+    end 
 end
