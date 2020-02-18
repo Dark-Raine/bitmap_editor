@@ -1,6 +1,4 @@
 class CommandService
-    attr_accessor :bitmap, :command_parser
-
     def initialize 
         @bitmap = Bitmap.new
         @command_parser = CommandParser.new
