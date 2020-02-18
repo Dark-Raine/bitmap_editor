@@ -21,6 +21,10 @@ class Bitmap
     def c
         @map.each {|row| row.fill("O")}
     end
+
+    def s
+        pp @map
+    end
     
     def l(x:,y:,colour:)
         @map[restrict_y(y)-1][restrict_x(x)-1] = colour

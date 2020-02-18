@@ -19,10 +19,10 @@ class CommandParser
         {command: parsed[0], parameters:{ x: parsed[1], y: parsed[2]}}
     end
     
-    def parse_clear_bitmap_command(command)
+    def parse_no_parameter_command(command)
         #function for parsing the C command
         # validates with regex and returns an object 
-        validator = /(^[C]$)/
+        validator = /(^[C]$|^[S]$)/
         validated = validator.match(command)
         return false unless validated
         parsed = validated.captures
